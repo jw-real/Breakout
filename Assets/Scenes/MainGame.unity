@@ -306,6 +306,7 @@ GameObject:
   - component: {fileID: 601203770}
   - component: {fileID: 601203771}
   - component: {fileID: 601203772}
+  - component: {fileID: 601203773}
   m_Layer: 0
   m_Name: BottomWall
   m_TagString: Untagged
@@ -429,6 +430,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &601203773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 601203769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b5a0d926f43ecc7a5eb6ee69047088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 10
 --- !u!1 &692375490
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +547,7 @@ GameObject:
   - component: {fileID: 729086712}
   - component: {fileID: 729086715}
   - component: {fileID: 729086714}
+  - component: {fileID: 729086716}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Untagged
@@ -683,6 +698,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &729086716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 729086711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d93d29537d22ac74a8bad290d8ff12e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
+  touchFollowSpeed: 10
 --- !u!1 &804933747
 GameObject:
   m_ObjectHideFlags: 0
@@ -694,6 +723,7 @@ GameObject:
   - component: {fileID: 804933748}
   - component: {fileID: 804933749}
   - component: {fileID: 804933750}
+  - component: {fileID: 804933751}
   m_Layer: 0
   m_Name: LeftWall
   m_TagString: Untagged
@@ -817,6 +847,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &804933751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 804933747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b5a0d926f43ecc7a5eb6ee69047088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 10
 --- !u!1 &1328398649
 GameObject:
   m_ObjectHideFlags: 0
@@ -828,6 +871,7 @@ GameObject:
   - component: {fileID: 1328398650}
   - component: {fileID: 1328398651}
   - component: {fileID: 1328398652}
+  - component: {fileID: 1328398653}
   m_Layer: 0
   m_Name: RightWall
   m_TagString: Untagged
@@ -951,6 +995,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1328398653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328398649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b5a0d926f43ecc7a5eb6ee69047088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 10
 --- !u!1 &1451566341
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,6 +1054,7 @@ GameObject:
   - component: {fileID: 1543962700}
   - component: {fileID: 1543962701}
   - component: {fileID: 1543962702}
+  - component: {fileID: 1543962703}
   m_Layer: 0
   m_Name: TopWall
   m_TagString: Untagged
@@ -1120,6 +1178,19 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1543962703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543962699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04b5a0d926f43ecc7a5eb6ee69047088, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounceStrength: 10
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
