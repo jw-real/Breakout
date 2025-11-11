@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour
     public LevelManager levelManager;
     public LevelData[] levels;
 
+    public Ball ball;
+
     private int currentLevel = 0;
 
     void Start()

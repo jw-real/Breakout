@@ -144,7 +144,7 @@ Transform:
   m_GameObject: {fileID: 7366735}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -7, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -195,7 +195,7 @@ Transform:
   m_GameObject: {fileID: 444605435}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0564251, y: 0.09789702, z: 0.009642158}
+  m_LocalPosition: {x: 0, y: 4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -216,7 +216,7 @@ GameObject:
   - component: {fileID: 491761411}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1189,6 +1189,7 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: bc3a3e48e2e81c5aba9b7f96f54fe55b, type: 2}
   - {fileID: 11400000, guid: 867d455843a9a3ce69ab0c5f3e7f0ba0, type: 2}
+  ball: {fileID: 491761411}
 --- !u!4 &1505234590
 Transform:
   m_ObjectHideFlags: 0
@@ -1198,7 +1199,7 @@ Transform:
   m_GameObject: {fileID: 1505234588}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.0564251, y: 0.09789702, z: 0.009642158}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1356,10 +1357,10 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 7366736}
   - {fileID: 1505234590}
   - {fileID: 444605437}
   - {fileID: 692375493}
   - {fileID: 729086713}
   - {fileID: 491761410}
   - {fileID: 1451566342}
-  - {fileID: 7366736}

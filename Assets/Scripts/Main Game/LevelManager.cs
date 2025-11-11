@@ -21,7 +21,10 @@ public class LevelManager : MonoBehaviour
             string row = data.layout[y];
             for (int x = 0; x < row.Length; x++)
             {
-                int type = row[x] - '1';
+                char c = row[x];
+                if (c == '0') continue; // skip empty
+
+                int type = c - '1'; // '1' -> 0, '2' -> 1, etc.
                 if (type >= 0 && type < blockPrefabs.Length)
                 {
                     Vector3 pos = new Vector3(x * blockWidth, -y * blockHeight, 0);

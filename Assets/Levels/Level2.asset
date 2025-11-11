@@ -12,4 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 173ccc78e9b865d26a77728589d5f1d9, type: 3}
   m_Name: Level2
   m_EditorClassIdentifier: 
-  layout: []
+  layout:
+  - '0001000
+
+    0011100
+
+    0111110
+
+    1111111'
