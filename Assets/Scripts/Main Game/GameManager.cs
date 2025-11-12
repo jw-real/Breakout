@@ -2,36 +2,30 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Level Management")]
     public LevelManager levelManager;
-    public LevelData[] levels;
 
-    public Ball ball;
+    [Header("Ball & Paddle")]
+    public GameObject ball;      // assign Ball prefab or scene object
+    public GameObject paddle;    // assign Paddle scene object
 
-    private int currentLevel = 0;
-
-    void Start()
+    private void Start()
     {
-        LoadCurrentLevel();
+        // Ensure ball and paddle are active
+        if (ball != null) ball.SetActive(true);
+        if (paddle != null) paddle.SetActive(true);
+
+        // Load first level
+        if (levelManager != null)
+            levelManager.LoadLevel(0);
     }
 
-    public void LoadCurrentLevel()
+    // Example method to move to next level
+    public void AdvanceLevel()
     {
-        levelManager.LoadLevel(levels[currentLevel]);
-    }
+        if (levelManager != null)
+            levelManager.LoadNextLevel();
 
-    public void OnLevelCleared()
-    {
-        currentLevel++;
-
-        if (currentLevel < levels.Length)
-        {
-            levelManager.ClearLevel();
-            LoadCurrentLevel();
-        }
-        else
-        {
-            Debug.Log("Game completed!");
-            // TODO: trigger win screen or restart
-        }
+        // Optionally reset ball and paddle here
     }
 }

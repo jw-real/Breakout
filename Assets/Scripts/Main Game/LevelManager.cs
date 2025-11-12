@@ -2,52 +2,64 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public Transform blocksParent;
-    public GameObject[] blockPrefabs;
-    public float blockWidth = 1f;
-    public float blockHeight = 0.5f;
+    [Header("Level Settings")]
+    public LevelDataAsset[] levelAssets;        // assign via Inspector
+    public GameObject[] blockPrefabs;           // assign your Block prefabs (Blue, Red, Yellow)
+    public Transform blocksParent;              // parent object for all blocks
 
-    private GameManager gameManager;
+    [Header("Block Layout")]
+    public float blockSpacingX = 0f;            // optional spacing between blocks
+    public float blockSpacingY = 0f;
 
-    void Awake()
+    private int currentLevel = 0;
+
+    private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        LoadLevel(currentLevel);
     }
 
-    public void LoadLevel(LevelData data)
+    public void LoadLevel(int levelIndex)
     {
-        for (int y = 0; y < data.layout.Length; y++)
-        {
-            string row = data.layout[y];
-            for (int x = 0; x < row.Length; x++)
-            {
-                char c = row[x];
-                if (c == '0') continue; // skip empty
+        // Cleanup old blocks
+        foreach (Transform child in blocksParent)
+            Destroy(child.gameObject);
 
-                int type = c - '1'; // '1' -> 0, '2' -> 1, etc.
-                if (type >= 0 && type < blockPrefabs.Length)
-                {
-                    Vector3 pos = new Vector3(x * blockWidth, -y * blockHeight, 0);
-                    Instantiate(blockPrefabs[type], pos, Quaternion.identity, blocksParent);
-                }
+        LevelDataAsset levelData = levelAssets[levelIndex];
+
+        // Determine block size from first prefab
+        float blockWidth = blockPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.x + blockSpacingX;
+        float blockHeight = blockPrefabs[0].GetComponent<SpriteRenderer>().bounds.size.y + blockSpacingY;
+
+        int rows = levelData.rows.Length;
+        int cols = levelData.rows[0].row.Length;
+
+        // Center the grid relative to blocksParent
+        float totalWidth = cols * blockWidth;
+        float totalHeight = rows * blockHeight;
+        Vector3 origin = new Vector3(-totalWidth / 2f + blockWidth / 2f, totalHeight / 2f - blockHeight / 2f, 0);
+
+        // Instantiate blocks
+        for (int r = 0; r < rows; r++)
+        {
+            for (int c = 0; c < cols; c++)
+            {
+                int type = levelData.rows[r].row[c];
+                if (type == 0) continue; // empty space
+
+                GameObject prefab = blockPrefabs[type - 1];
+                Vector3 localPos = new Vector3(origin.x + c * blockWidth, origin.y - r * blockHeight, 0);
+                Instantiate(prefab, blocksParent.TransformPoint(localPos), Quaternion.identity, blocksParent);
             }
         }
     }
 
-    public void ClearLevel()
+    // Optional: Call this to load next level
+    public void LoadNextLevel()
     {
-        foreach (Transform child in blocksParent)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
-    void Update()
-    {
-        if (blocksParent.childCount == 0)
-        {
-            gameManager.OnLevelCleared();
-        }
+        currentLevel++;
+        if (currentLevel >= levelAssets.Length) currentLevel = 0; // loop back
+        LoadLevel(currentLevel);
     }
 }
+
 
