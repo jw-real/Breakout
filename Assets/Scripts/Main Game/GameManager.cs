@@ -6,12 +6,17 @@ public class GameManager : MonoBehaviour
 {
     [Header("Level Management")]
     public LevelManager levelManager;
+    public Ball ballPrefab;
+    public int startingLives = 3;
+
+    private Ball currentBall;
+    private int lives;
 
     [Header("References")]
     public GameObject ball;         // assign Ball prefab or scene object
     public GameObject paddle;       // assign Paddle scene object
-    public TextMeshProUGUI score;   // assign score
-    public TextMeshProUGUI lives;   // assign lives
+    public TextMeshProUGUI scoreCounter;   // assign score
+    public TextMeshProUGUI livesCounter;   // assign lives
 
     private void Start()
     {
@@ -31,5 +36,50 @@ public class GameManager : MonoBehaviour
             levelManager.LoadNextLevel();
 
         // Optionally reset ball and paddle here
+    }
+    public void LoseLife()
+    {
+        lives--;
+        Debug.Log("Life lost. Lives remaining: " + lives);
+
+        if (lives <= 0)
+        {
+            GameOver();
+        }
+        else
+        {
+            ResetBall();
+        }
+    }
+    private void ResetBall()
+    {
+        if (currentBall != null)
+            Destroy(currentBall.gameObject);
+
+        currentBall = Instantiate(ballPrefab, Vector3.zero, Quaternion.identity);
+    }
+
+    private void GameOver()
+    {
+        Debug.Log("GAME OVER");
+        // Add UI, restart logic, etc. later
+    }
+
+    public void NextLevel()
+    {
+        int nextIndex = levelManager.GetCurrentLevelIndex() + 1;
+        if (nextIndex < levelManager.levelAssets.Length)
+        {
+            LoadLevel(nextIndex);
+        }
+        else
+        {
+            Debug.Log("YOU WIN!");
+        }
+    }
+    public void LoadLevel(int index)
+    {
+        levelManager.LoadLevel(index);
+        ResetBall();
     }
 }

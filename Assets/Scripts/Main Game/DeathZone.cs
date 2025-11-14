@@ -1,17 +1,19 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ScoringZone : MonoBehaviour
+public class DeathZone : MonoBehaviour
 {
     public EventTrigger.TriggerEvent deathTrigger;
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Ball ball = collision.gameObject.GetComponent<Ball>();
+        Ball ball = collision.GetComponent<Ball>();
 
         if (ball != null)
         {
             BaseEventData eventData = new BaseEventData(EventSystem.current);
-            this.deathTrigger.Invoke(eventData);
+            deathTrigger.Invoke(eventData);
         }
     }
 }
+

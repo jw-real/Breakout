@@ -11,11 +11,11 @@ public class LevelManager : MonoBehaviour
     public float blockSpacingX = 0f;            // optional spacing between blocks
     public float blockSpacingY = 0f;
 
-    private int currentLevel = 0;
+    private int currentLevelIndex = 0;
 
     private void Start()
     {
-        LoadLevel(currentLevel);
+        LoadLevel(currentLevelIndex);
     }
 
     public void LoadLevel(int levelIndex)
@@ -56,9 +56,13 @@ public class LevelManager : MonoBehaviour
     // Optional: Call this to load next level
     public void LoadNextLevel()
     {
-        currentLevel++;
-        if (currentLevel >= levelAssets.Length) currentLevel = 0; // loop back
-        LoadLevel(currentLevel);
+        currentLevelIndex++;
+        if (currentLevelIndex >= levelAssets.Length) currentLevelIndex = 0; // loop back
+        LoadLevel(currentLevelIndex);
+    }
+    public int GetCurrentLevelIndex()
+    {
+        return currentLevelIndex;
     }
 }
 
