@@ -1,13 +1,17 @@
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     [Header("Level Management")]
     public LevelManager levelManager;
 
-    [Header("Ball & Paddle")]
-    public GameObject ball;      // assign Ball prefab or scene object
-    public GameObject paddle;    // assign Paddle scene object
+    [Header("References")]
+    public GameObject ball;         // assign Ball prefab or scene object
+    public GameObject paddle;       // assign Paddle scene object
+    public TextMeshProUGUI score;   // assign score
+    public TextMeshProUGUI lives;   // assign lives
 
     private void Start()
     {
